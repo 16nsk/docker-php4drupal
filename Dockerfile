@@ -13,3 +13,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd \
     && printf "\n" | pecl install -f memcached \
     && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini \
+    && echo "request_terminate_timeout = 30" >> /usr/local/etc/php-fpm.conf
+
+COPY zzz-custom-php.ini /usr/local/etc/php/conf.d/zzz-custom.ini
